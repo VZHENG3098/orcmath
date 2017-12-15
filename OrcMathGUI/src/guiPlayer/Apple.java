@@ -3,20 +3,22 @@ package guiPlayer;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Component;
 
-public class Apple extends Component {
+public class Apple extends AnimatedComponent {
 
 	public Apple() {
-		super(50,20, 100, 100);
+		super(50,20, 1536, 256);
+		addSequence("resources/sprite.png", 150, 0, 0, 261, 256, 6);
 		update();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void update(Graphics2D g) {
-		g.setColor(Color.DARK_GRAY);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		super.update(g);
+		//g.setColor(Color.DARK_GRAY);
+		//g.fillRect(0, 0, getWidth(), getHeight());
 	}
 
 }
