@@ -30,13 +30,16 @@ public class CatalogMaker {
 		String name;
 		String type;
 		String price;
-		System.out.println("Add pokemon name\n");
-		name = sc.nextLine();
-		System.out.println("Add pokemon type\n");
-		type = sc.nextLine();
-		System.out.println("Add pokemon price\n");
-		price = sc.nextLine();
-		addNewItem(name,type,Double.parseDouble(price));
+		while(!(sc.nextLine().equals("stop"))) {
+			System.out.println("Add pokemon name\n");
+			name = sc.nextLine();
+			System.out.println("Add pokemon type\n");
+			type = sc.nextLine();
+			System.out.println("Add pokemon price\n");
+			price = sc.nextLine();
+			addNewItem(name,type,Double.parseDouble(price));
+		}
+
 	}
 	public static void addNewItem(String name, String type, double price) {
 		list.add(new Pokemon(name,type,price));
