@@ -9,61 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CatalogMaker {
+public class FilelLoadingJava {
 
-	private static ArrayList<Pokemon> list;
-	static Scanner sc = new Scanner(System.in);
-	public CatalogMaker() {
-		list = new ArrayList<Pokemon>();
-		list.add(new Pokemon("Squirtle","Water",5.00));
-		list.add(new Pokemon("Bulbasaur","Grass",5.00));
-		list.add(new Pokemon("Charmander","Fire",10.00));
-	}
-	
-	public static String StringGetCSVContent() {
-		String data = "Pokemon,Type,Price \n";
-		for(Pokemon p:list) {
-			data += p+"\n";
-		}
-		return data;
-	}
 	public static void main(String[] args) {
-		CatalogMaker  x = new CatalogMaker();
-		System.out.println(x.StringGetCSVContent());
-		x.testSaveContent("test2.csv");
-		getInput();
-	}
-	public static void getInput() {
-		String name;
-		String type;
-		String price;
-		while(!(sc.nextLine().equals("stop"))) {
-			System.out.println("Add pokemon name\n");
-			name = sc.nextLine();
-			System.out.println("Add pokemon type\n");
-			type = sc.nextLine();
-			System.out.println("Add pokemon price\n");
-			price = sc.nextLine();
-			addNewItem(name,type,Double.parseDouble(price));
-		}
+
+		List<String> content = testFileLoading();
+
+		displayContent(content);
+
+		testSaveContent("test.csv");
 
 	}
-	public static void addNewItem(String name, String type, double price) {
-		list.add(new Pokemon(name,type,price));
-		System.out.println("Added new Pokemon");
-		System.out.println(StringGetCSVContent());
-		
-	}
-	
-	private  void testSaveContent(String fileName) {
+
+	private static void testSaveContent(String fileName) {
 
 		try {
 
 			FileWriter fw = new FileWriter(fileName);
 
-			for(Pokemon a : list) {
-				fw.write(a.toString());
-			}
+			fw.write("This file was created programmatically.");
 
 			fw.close();
 
@@ -78,7 +42,19 @@ public class CatalogMaker {
 
 	}
 
-	private List<String> testFileLoading() {
+	private static void displayContent(List<String> content) {
+
+		// print the content:
+
+		for (String item : content) {
+
+			System.out.println(item);
+
+		}
+
+	}
+
+	private static List<String> testFileLoading() {
 
 		Scanner in = new Scanner(System.in);
 
@@ -142,6 +118,5 @@ public class CatalogMaker {
 		return content;
 
 	}
-	
 
 }

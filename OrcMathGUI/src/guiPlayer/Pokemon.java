@@ -35,4 +35,6 @@ public class Pokemon extends Component {
 		return name+","+type+","+price;
 		
 	}
+	
+	
 }
