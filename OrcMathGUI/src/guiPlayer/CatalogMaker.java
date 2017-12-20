@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class CatalogMaker {
 
-	private static ArrayList<Pokemon> list;
+	private ArrayList<Pokemon> list;
 	static Scanner sc = new Scanner(System.in);
 	public CatalogMaker() {
 		list = new ArrayList<Pokemon>();
@@ -19,8 +19,7 @@ public class CatalogMaker {
 		list.add(new Pokemon("Bulbasaur","Grass",5.00));
 		list.add(new Pokemon("Charmander","Fire",10.00));
 	}
-	
-	public static String StringGetCSVContent() {
+	public String StringGetCSVContent() {
 		String data = "Pokemon,Type,Price \n";
 		for(Pokemon p:list) {
 			data += p+"\n";
@@ -30,29 +29,27 @@ public class CatalogMaker {
 	public static void main(String[] args) {
 		CatalogMaker  x = new CatalogMaker();
 		System.out.println(x.StringGetCSVContent());
-		x.testSaveContent("test2.csv");
-		getInput();
+		System.out.println("What do you want to name to file?");
+		List<String> content = x.testFileLoading();
+		x.getData(content);
+		x.getInput();
+		x.testSaveContent("name.csv");
 	}
-	public static void getInput() {
+	public  void getInput() {
 		String name;
 		String type;
 		String price;
-		while(!(sc.nextLine().equals("stop"))) {
-			System.out.println("Add pokemon name\n");
-			name = sc.nextLine();
-			System.out.println("Add pokemon type\n");
-			type = sc.nextLine();
-			System.out.println("Add pokemon price\n");
-			price = sc.nextLine();
-			addNewItem(name,type,Double.parseDouble(price));
-		}
+		System.out.println("Add pokemon name\n");
+		name = sc.nextLine();
+		System.out.println("Add pokemon type\n");
+		type = sc.nextLine();
+		System.out.println("Add pokemon price\n");
+		price = sc.nextLine();
+		addNewItem(name,type,Double.parseDouble(price));
 
 	}
-	public static void addNewItem(String name, String type, double price) {
+	public void addNewItem(String name, String type, double price) {
 		list.add(new Pokemon(name,type,price));
-		System.out.println("Added new Pokemon");
-		System.out.println(StringGetCSVContent());
-		
 	}
 	
 	private  void testSaveContent(String fileName) {
@@ -62,7 +59,7 @@ public class CatalogMaker {
 			FileWriter fw = new FileWriter(fileName);
 
 			for(Pokemon a : list) {
-				fw.write(a.toString());
+				fw.write(a +"\n");
 			}
 
 			fw.close();
@@ -85,10 +82,6 @@ public class CatalogMaker {
 		String fileName = "";
 
 		List<String> content = new ArrayList<String>();
-
-		// use this boolean to control the while loop. The user should have multiple
-		// chances to enter a correct filename
-
 		boolean opened = false;
 
 		while (!opened) {
@@ -103,24 +96,12 @@ public class CatalogMaker {
 
 				String line = "";
 
-				// a BufferedReader enables us to read teh file one line at a time
 
 				BufferedReader br = new BufferedReader(fileReader);
 
 				while ((line = br.readLine()) != null) {
 
 					content.add(line);
-
-					/*
-					 * 
-					 * useful later:
-					 * 
-					 * split only a comma that has an even number of quotes ahead of it
-					 * 
-					 * String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-					 * 
-					 */
-
 				}
 
 				br.close();
@@ -134,14 +115,16 @@ public class CatalogMaker {
 			}
 
 		}
-
-		// close the Scanner
-
-		in.close();
-
 		return content;
 
 	}
 	
+	public void getData(List<String> content) {
+		for (String item : content) {
+
+			System.out.println(item);
+
+		}
+	}
 
 }
