@@ -28,7 +28,6 @@ public class LabelImplementation extends Button implements CustomLabel {
 	@Override
 	public void updateString2(String string) {
 		s2 = string;
-	
 	}
 
 	public void drawButton(Graphics2D g, boolean hover){
