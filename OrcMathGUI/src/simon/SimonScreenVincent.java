@@ -1,9 +1,10 @@
 package simon;
 
 import java.util.ArrayList;
+import java.awt.Color;
 import java.util.List;
 
-import com.sun.prism.paint.Color;
+
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -33,20 +34,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 	public SimonScreenVincent(int width, int height) {
 		super(width, height);
 		
-		array = new ArrayList<MoveInterfaceVincent>();
-		oldButton = -1;
-		allButtons = new ButtonInterfaceVincent[4];
-		colors = new Color[4];
-		colors[0] = Color.BLUE;
-		colors[1] = Color.WHITE;
-		colors[2] = Color.RED;
-		colors[3] = Color.GREEN;
-		colors[4] = Color.BLACK;
 		
-		roundNum = 0;
-		sequenceLength = 0;
-		sequenceWin= 3;
-		input = true;
 		
 		Thread app = new Thread(this);
 		app.start();
@@ -60,8 +48,8 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		for (int i=0;i<sequenceWin;i++){
 			array.add(getRandomMove());
 		}
-		progress.setNum(roundNum);
-		progress.setSeqNum(sequenceWin);
+/*		progress.setNum(roundNum);
+		progress.setSeqNum(sequenceWin);*/
 		simonInput();
 		input = true;
 		
@@ -93,11 +81,30 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		array = new ArrayList<MoveInterfaceVincent>();
+		oldButton = -1;
+		allButtons = new ButtonInterfaceVincent[4];
+		colors = new Color[4];
+		colors[0] = Color.BLUE;
+		colors[1] = Color.YELLOW;
+		colors[2] = Color.RED;
+		colors[3] = Color.GREEN;
+	
+		roundNum = 0;
+		sequenceLength = 0;
+		sequenceWin= 3;
+		input = true;
+		
+		
 		displayRound = new TextLabel(50,50,200,100,Integer.toString(roundNum));
 		viewObjects.add(displayRound);
 		
 		for (int i = 0;i <allButtons.length;i++) {
-			final ButtonInterfaceVincent button = getButton(colors[i]);
+			
+			final ButtonInterfaceVincent button = getButton();
+			button.setColor1(colors[i]);
+			button.setX(i*55);
+			button.setY(i*50);
 			button.setAction(new Action(){
 				public void act(){
 					if(input) {
@@ -128,15 +135,15 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 			});
 			allButtons[i] = button;
 		}
-		progress = getProgressBar();
+	/*	progress = getProgressBar();
 		progress.setNum(roundNum);
-		progress.setSeqNum(sequenceLength);
+		progress.setSeqNum(sequenceLength);*/
 		
 
 		for (int i = 0;i <allButtons.length;i++) {
 			viewObjects.add(allButtons[i]);
 		}
-		viewObjects.add(progress);
+	//	viewObjects.add(progress);
 	}
 
 	private MoveInterfaceVincent getRandomMove() {
@@ -154,14 +161,18 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 	}
 
 
-	private ProgressInterfaceVincent getProgressBar() {
-		// TODO Auto-generated method stub
-		return null;
+	/*private ProgressInterfaceVincent getProgressBar() {
+		return ProgressInterfaceVincent.setNum
+	}*/
+
+	
+
+
+	private ButtonInterfaceVincent getButton() {
+		ButtonJessica button = new ButtonJessica(0,0,50,50,"",null);
+		return button;
 	}
 
-	private ButtonInterfaceVincent getButton(Color colors2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
