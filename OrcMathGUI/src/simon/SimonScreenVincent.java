@@ -155,9 +155,13 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 	}
 
 
-	private MoveInterfaceVincent pickMove(int i) {
-		// TODO Auto-generated method stub
-		return null;
+
+
+	private MoveInterfaceVincent pickMove(int randomInt) {
+		MoveJessica move = new MoveJessica();
+		return move.getNumButton(randomInt);
+		
+		
 	}
 
 

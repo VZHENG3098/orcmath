@@ -2,8 +2,11 @@ package simon;
 
 public interface MoveInterfaceVincent {
 
-	ButtonInterfaceVincent getButton();
-
+	
+	ButtonInterfaceVincent getNumButton(int a);
+	
 	ButtonInterfaceVincent getTheButton();
+
+	ButtonInterfaceVincent getButton();
 
 }

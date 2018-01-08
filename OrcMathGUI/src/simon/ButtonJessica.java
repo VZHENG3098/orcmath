@@ -33,14 +33,7 @@ public class ButtonJessica extends Button implements ButtonInterfaceVincent {
 		}
 
 	}
-	public static ButtonJessica getButton()
-	{
-		return ButtonJessica(0, 0, 50, 50, "", null);
-	}
 
-	private static ButtonJessica ButtonJessica(int i, int j, int k, int l, String string, Object object) {
-		return null;
-	}
 
 	
 
