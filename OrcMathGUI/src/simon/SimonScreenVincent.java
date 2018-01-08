@@ -35,14 +35,13 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		
 		array = new ArrayList<MoveInterfaceVincent>();
 		oldButton = -1;
-		allButtons = new ButtonInterfaceVincent[5];
-		colors = new Color[5];
-		colors[0] = Color.blue;
-		colors[1] = Color.orange;
-		colors[2] = Color.red;
-		colors[3] = Color.green;
-		colors[4] = Color.yellow;
-		colors[5] = Color.pink;
+		allButtons = new ButtonInterfaceVincent[4];
+		colors = new Color[4];
+		colors[0] = Color.BLUE;
+		colors[1] = Color.WHITE;
+		colors[2] = Color.RED;
+		colors[3] = Color.GREEN;
+		colors[4] = Color.BLACK;
 		
 		roundNum = 0;
 		sequenceLength = 0;
@@ -61,7 +60,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		for (int i=0;i<sequenceWin;i++){
 			array.add(getRandomMove());
 		}
-		progress.setNum(roundNum)
+		progress.setNum(roundNum);
 		progress.setSeqNum(sequenceWin);
 		simonInput();
 		input = true;
@@ -69,10 +68,10 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 	}
 	
 	public void simonInput(){
-		ButtonInterfaceRaymond b;
+		ButtonInterfaceVincent b;
 		for(int i = 0; i < array.size(); i++) {
 			b = array.get(i).getButton();
-			b.setBright("bright")
+			b.setBright("bright");
 			Thread sleep = new Thread(new Runnable() {
 
 				public void run() {
@@ -85,7 +84,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 				}
 
 			});
-			sleep.start()
+			sleep.start();
 			b.setBright("dim");
 		}
 		
@@ -98,7 +97,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		viewObjects.add(displayRound);
 		
 		for (int i = 0;i <allButtons.length;i++) {
-			final ButtonInterfaceVincent button = getButton(color[i]);
+			final ButtonInterfaceVincent button = getButton(colors[i]);
 			button.setAction(new Action(){
 				public void act(){
 					if(input) {
@@ -160,7 +159,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	private ButtonInterfaceVincent getButton() {
+	private ButtonInterfaceVincent getButton(Color colors2) {
 		// TODO Auto-generated method stub
 		return null;
 	}

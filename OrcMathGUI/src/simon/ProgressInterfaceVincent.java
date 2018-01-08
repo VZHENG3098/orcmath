@@ -8,4 +8,6 @@ public interface ProgressInterfaceVincent extends Visible {
 
 	void setSeqNum(int sequenceLength);
 
+	void lose();
+
 }
