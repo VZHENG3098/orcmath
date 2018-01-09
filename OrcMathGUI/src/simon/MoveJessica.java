@@ -2,17 +2,13 @@ package simon;
 
 public class MoveJessica implements MoveInterfaceVincent {
 
-	public ButtonInterfaceVincent getNumButton(int a) {
-		return SimonGameVincent.simon.allButtons[a];	
+	ButtonInterfaceVincent button;
+	
+	public MoveJessica(ButtonInterfaceVincent button) {
+		this.button = button;
 	}
-	@Override
 	public ButtonInterfaceVincent getTheButton() {
-		return this;
-	}
-	@Override
-	public ButtonInterfaceVincent getButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return button;
 	}
 
 }

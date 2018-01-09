@@ -1,40 +1,52 @@
 package simon;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+
+import com.itextpdf.text.Font;
 
 import guiTeacher.components.Component;
 
 public class ProgressJessica extends Component implements ProgressInterfaceVincent {
+	private int roundNum;
+	private int sequenceNum;
+	private boolean loss;
 	
 	
-	public ProgressJessica(int x, int y, int w, int h) {
-		super(x, y, w, h);
-		// TODO Auto-generated constructor stub
-	}
-
-	
-	public void setSeqNum(int sequenceLength) {
-		// TODO Auto-generated method stub
-
+	public ProgressJessica() {
+		super(250,50,400,200);
 	}
 
 	@Override
 	public void lose() {
-		// TODO Auto-generated method stub
-
+		loss = true;
+		update();
 	}
 
 	@Override
 	public void update(Graphics2D g) {
-		// TODO Auto-generated method stub
+			clear();
+		if(loss) {
+			g.setColor(Color.RED);
+			g.fillRect(300, 0, 200, 100);
+			g.setColor(Color.black);
+			g.drawString("Round: "+roundNum,10,55);
+			g.drawString("Current Sequence Length: "+sequenceNum,5,100);
+			g.drawString("LOL YOU CAN'T EVEN PLAY A KID GAME",5,150);
+		}else {
+			g.setColor(Color.GREEN);
+			g.fillRect(300, 0, 200, 100);
+			g.setColor(Color.black);
+			g.drawString("Round: "+roundNum,5,55);
+			g.drawString("Current Sequence Length: "+sequenceNum,5,100);
+		}
 
 	}
-
-
 	@Override
-	public ProgressJessica setNum(int roundNum) {
-		ProgressJessica progress = new ProgressJessica(0,0,50,50);
-		return progress;
+	public void setNum(int round,int seq) {
+		roundNum = round;
+		sequenceNum = seq;
+		update();
 		
 	}
 
