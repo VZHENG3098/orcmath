@@ -69,7 +69,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		
 	}
 	
-	
+	 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		array = new ArrayList<MoveInterfaceVincent>();

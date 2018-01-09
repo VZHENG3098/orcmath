@@ -21,9 +21,9 @@ public class ProgressJessica extends Component implements ProgressInterfaceVince
 	public void lose() {
 		loss = true;
 		update();
-	}
+	} 
 
-	@Override
+	@Override 
 	public void update(Graphics2D g) {
 			clear();
 		if(loss) {

@@ -20,7 +20,7 @@ public class ButtonJessica extends Button implements ButtonInterfaceVincent {
 		color = c;
 		this.setBackground(c);
 		update();
-	}
+	} 
 	
 	@Override
 	public void setAction(Action a) {

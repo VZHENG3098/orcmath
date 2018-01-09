@@ -11,7 +11,7 @@ public class SimonGameVincent extends GUIApplication {
 		super(width,height);
 		setVisible(true);
 	}
-	
+	 
 	public static void main(String[] args){
 		sample = new SimonGameVincent(1000, 1000);
 		Thread go = new Thread(sample);

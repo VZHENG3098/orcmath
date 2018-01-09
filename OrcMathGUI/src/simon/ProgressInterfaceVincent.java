@@ -9,3 +9,4 @@ public interface ProgressInterfaceVincent extends Visible {
 	void setNum(int roundNum,int sequenceLength);
 
 }
+ 

@@ -10,5 +10,5 @@ public class MoveJessica implements MoveInterfaceVincent {
 	public ButtonInterfaceVincent getTheButton() {
 		return button;
 	}
-
+ 
 }
