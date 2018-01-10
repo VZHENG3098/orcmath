@@ -148,7 +148,7 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		int randomInt = (int)(Math.random()*allButtons.length);
 		while (randomInt == oldButton) {
 			randomInt = (int)(Math.random()*allButtons.length);
-		}
+		} 
 		oldButton = randomInt;
 		return new MoveJessica(allButtons[randomInt]);
 	}
