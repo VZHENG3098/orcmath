@@ -43,7 +43,10 @@ public class SimonScreenVincent extends ClickableScreen implements Runnable {
 		input = false;
 		sequenceWin++;
 		roundNum++;
-		array.add(getRandomMove());
+		array.clear();
+		for (int i = 0;i<sequenceWin-1;i++) {
+			array.add(getRandomMove());
+		}
 		progress.setNum(roundNum, array.size());
 		displayRound.setText("Follow my steps if you can xd");
 		simonInput();
